@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+
+# Odoo logs, sessions, filestore
+*.log
+*.pid
+.odoo/
+filestore/
+
+# IDE/Editor files
+.vscode/
+.idea/
+odoo/
