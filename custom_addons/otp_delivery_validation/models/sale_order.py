@@ -9,6 +9,7 @@ _logger = logging.getLogger(__name__)
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    # The fields and methods you provided
     otp_code = fields.Char("OTP Code", readonly=True)
     otp_verified = fields.Boolean("OTP Verified", default=False)
 
@@ -28,3 +29,19 @@ class SaleOrder(models.Model):
             'target': 'new',
             'context': {'default_sale_order_id': self.id},
         }
+
+    # The new computed field to control button visibility
+    show_buttons = fields.Boolean(
+        string='Show OTP Buttons',
+        compute='_compute_show_buttons',
+        store=True, # Recommended to store the value for performance
+    )
+
+    # The method to compute the value of the show_buttons field
+    def _compute_show_buttons(self):
+        for rec in self:
+            # Check if the state is 'sale' AND the OTP has NOT been verified
+            if rec.state == 'sale' and not rec.otp_verified:
+                rec.show_buttons = True
+            else:
+                rec.show_buttons = False

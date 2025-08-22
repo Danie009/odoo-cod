@@ -9,18 +9,19 @@
                 <page string="OTP Validation">
                     <group>
                         <field name="otp_code" readonly="1"/>
-                        <field name="otp_verified"/>
+                        <field name="otp_verified" readonly="1"/>
+                        <field name="show_buttons" invisible="1"/>
                         <!-- The 'invisible' attribute uses a domain to check the 'state' field. -->
                         <!-- The buttons will be hidden if the state is NOT 'sale'. -->
                         <button name="generate_otp" 
                                 type="object" 
                                 string="Generate OTP" 
-                                class="btn-primary"
+                                class="btn-primary o_full_width_button"
                                 invisible="state != 'sale'"/>
                         <button name="action_open_otp_verification" 
                                 type="object" 
                                 string="Verify OTP" 
-                                class="btn-success"
+                                class="btn-success o_full_width_button"
                                 invisible="state != 'sale'"/>
                     </group>
                 </page>

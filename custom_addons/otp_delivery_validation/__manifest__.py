@@ -19,6 +19,11 @@
         'views/delivery_validation_views.xml',
         'wizard/otp_verification_wizard.xml',
     ],
+     'assets': {
+        'web.assets_backend': [
+            'otp_delivery_validation/static/src/css/styles.css',
+        ],
+     },
     'installable': True,
     'application': False,
     'auto_install': False,
