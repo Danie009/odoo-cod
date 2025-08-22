@@ -1,0 +1,49 @@
+<odoo>
+    <!-- =========================
+         DEMO CUSTOMER
+    ========================== -->
+    <record id="res_partner_demo_customer" model="res.partner">
+        <field name="name">Daniel Mwesigwa</field>
+        <field name="email">daniel.mwesigwa.ot@gmail.com</field>
+        <field name="phone">+256782835907</field>
+        <field name="customer_rank">1</field>
+    </record>
+
+    <!-- =========================
+         DEMO PRODUCT(S)
+    ========================== -->
+    <record id="product_demo_phone" model="product.product">
+        <field name="name">Demo Smartphone</field>
+        <field name="list_price">1200</field>
+        <field name="type">product</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">True</field>
+    </record>
+
+    <record id="product_demo_laptop" model="product.product">
+        <field name="name">Demo Laptop</field>
+        <field name="list_price">2500</field>
+        <field name="type">product</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">True</field>
+    </record>
+
+    <!-- =========================
+         DEMO SALE ORDER
+    ========================== -->
+    <record id="sale_order_demo_otp" model="sale.order">
+        <field name="partner_id" ref="res_partner_demo_customer"/>
+        <field name="state">draft</field>
+        <field name="otp_code">654321</field>
+        <field name="otp_verified">False</field>
+        <field name="order_line" eval="[(0, 0, {
+            'product_id': ref('product_demo_phone'),
+            'product_uom_qty': 1,
+            'price_unit': 1200,
+        }), (0, 0, {
+            'product_id': ref('product_demo_laptop'),
+            'product_uom_qty': 2,
+            'price_unit': 2500,
+        })]"/>
+    </record>
+</odoo>

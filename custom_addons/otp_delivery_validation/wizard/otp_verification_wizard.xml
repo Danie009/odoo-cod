@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_otp_verification_wizard" model="ir.ui.view">
+        <field name="name">otp.verification.wizard.form</field>
+        <field name="model">otp.verification.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Verify OTP">
+                <group>
+                    <field name="sale_order_id" readonly="1"/>
+                    <field name="entered_otp"/>
+                </group>
+                <footer>
+                    <button string="Verify" type="object" name="action_verify_otp" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_otp_verification_wizard" model="ir.actions.act_window">
+        <field name="name">OTP Verification</field>
+        <field name="res_model">otp.verification.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

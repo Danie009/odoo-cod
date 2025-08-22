@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_otp" model="ir.ui.view">
+        <field name="name">sale.order.form.otp</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook/page[@name='order_lines']" position="after">
+                <page string="OTP Validation">
+                    <group>
+                        <field name="otp_code" readonly="1"/>
+                        <field name="otp_verified"/>
+                        <!-- The 'invisible' attribute uses a domain to check the 'state' field. -->
+                        <!-- The buttons will be hidden if the state is NOT 'sale'. -->
+                        <button name="generate_otp" 
+                                type="object" 
+                                string="Generate OTP" 
+                                class="btn-primary"
+                                invisible="state != 'sale'"/>
+                        <button name="action_open_otp_verification" 
+                                type="object" 
+                                string="Verify OTP" 
+                                class="btn-success"
+                                invisible="state != 'sale'"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
